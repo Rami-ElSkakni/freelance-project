@@ -1,0 +1,146 @@
+<div class="applicant-wrapper">
+  <h1>Please add your details</h1>
+  <form
+    class="applicant-wrapper-grid"
+    [formGroup]="applicantForm"
+    (ngSubmit)="submitForm()"
+  >
+    <input
+      type="text"
+      pInputText
+      placeholder="Enter First Name"
+      formControlName="firstName"
+    />
+
+    <input
+      type="text"
+      pInputText
+      placeholder="Enter Last Name"
+      formControlName="lastName"
+    />
+
+    <input
+      type="text"
+      pInputText
+      placeholder="Enter Nationality"
+      formControlName="nationality"
+    />
+
+    <!-- <input
+      type="date"
+      pInputText
+      placeholder="Enter Date of Birth"
+      formControlName="dateOfBirth"
+    /> -->
+    <p-calendar
+      placeholder="Enter Date of Birth"
+      formControlName="dateOfBirth"
+    />
+
+    <input
+      type="text"
+      pInputText
+      placeholder="Enter City of Birth"
+      formControlName="cityOfBirth"
+    />
+
+    <input
+      type="text"
+      pInputText
+      placeholder="Enter Country of Birth"
+      formControlName="countryOfBirth"
+    />
+
+    <input
+      type="text"
+      pInputText
+      placeholder="Enter Mobile Number"
+      formControlName="mobileNumber"
+    />
+
+    <input
+      type="text"
+      pInputText
+      placeholder="Enter WhatsApp Number"
+      formControlName="whatsAppNumber"
+    />
+
+    <input
+      type="email"
+      pInputText
+      placeholder="Enter Email"
+      formControlName="email"
+    />
+
+    <input
+      type="text"
+      pInputText
+      placeholder="Enter German Knowledge"
+      formControlName="germanKnowledge"
+    />
+
+    <input
+      type="text"
+      pInputText
+      placeholder="Enter Domain"
+      formControlName="domain"
+    />
+
+    <input
+      type="text"
+      pInputText
+      placeholder="Enter Degree Type"
+      formControlName="degreeType"
+    />
+
+    <input
+      type="text"
+      pInputText
+      placeholder="Enter University"
+      formControlName="university"
+    />
+
+    <input
+      type="number"
+      pInputText
+      placeholder="Enter Years of Experience"
+      formControlName="yearsOfExperience"
+    />
+
+    <div>
+      
+      <!-- <p-checkbox
+        formControlName="knowsPreviousAttendee"
+        inputId="knowsPreviousAttendeem"
+        name="should_renew"
+      ></p-checkbox> -->
+      <input type="checkbox" formControlName="knowsPreviousAttendee">
+      <label for="knowsPreviousAttendeem">Knows Previous Attendee</label>
+    </div>
+
+    <div class="div">
+      <label for="passportScan">Upload Passport Scan</label>
+      <input type="file" id="passportScan" (change)="onFileChange($event)" />
+    </div>
+
+    <div class="div">
+      <label for="cv">Upload CV</label>
+      <input type="file" id="cv"(change)="onFileChangeCv($event)" />
+      <!-- <p-fileUpload 
+      mode="basic" 
+      chooseLabel="Upload CV" 
+      chooseIcon="pi pi-upload"
+      accept=".pdf" 
+      [showCancelButton]="true"
+      (onUpload)="onFileChangeCv($event)" /> -->
+    </div>
+
+    <button
+      type="submit"
+      pButton
+      label="Submit"
+      [disabled]="applicantForm.invalid || loading"
+      [loading]="loading"
+    ></button>
+  </form>
+</div>

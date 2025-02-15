@@ -1,0 +1,32 @@
+.applicant-wrapper {
+    display: flex;
+    height: 100vh;
+    /* justify-content: center;
+    align-items: center; */
+    flex-direction: column;
+    gap: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.applicant-wrapper-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 900px) {
+    /* Add your styles for screens smaller than 900px here */
+    .applicant-wrapper-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+}
+  

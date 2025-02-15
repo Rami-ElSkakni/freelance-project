@@ -1,0 +1,18 @@
+.login-container {
+    display: flex;
+    
+    flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.login-instead {
+    cursor: pointer;
+    opacity: 0.7;
+    text-align: center;
+}

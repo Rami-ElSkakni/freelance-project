@@ -1,0 +1,143 @@
+<div class="admin-wrapper">
+  <p-toast class="toast"></p-toast>
+  <h1>Welcome to Admin panel!</h1>
+
+  <h2>All contact Messages receieved</h2>
+  <p-table
+    [value]="products"
+    [loading]="loading"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Message</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.email }}</td>
+        <td>{{ product.subject }}</td>
+        <td>{{ product.message }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <h2>Applicants</h2>
+  <p-table
+    [value]="applicantsData"
+    [loading]="loading"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Nationality</th>
+        <th>Date of Birth</th>
+        <th>City of Birth</th>
+        <th>Country of Birth</th>
+        <th>Mobile Number</th>
+        <th>WhatsApp Number</th>
+        <th>Email</th>
+        <th>German Knowledge</th>
+        <th>Domain</th>
+        <th>Degree Type</th>
+        <th>University</th>
+        <th>Years of Experience</th>
+        <th>Knows Previous Attendee</th>
+        <th>Passport Scan</th>
+        <th>CV</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-applicant>
+      <tr>
+        <td>{{ applicant.firstName }}</td>
+        <td>{{ applicant.lastName }}</td>
+        <td>{{ applicant.nationality }}</td>
+        <td>{{ applicant.dateOfBirth | date : "yyyy-MM-dd" }}</td>
+        <td>{{ applicant.cityOfBirth }}</td>
+        <td>{{ applicant.countryOfBirth }}</td>
+        <td>{{ applicant.mobileNumber }}</td>
+        <td>{{ applicant.whatsAppNumber }}</td>
+        <td>{{ applicant.email }}</td>
+        <td>{{ applicant.germanKnowledge }}</td>
+        <td>{{ applicant.domain }}</td>
+        <td>{{ applicant.degreeType }}</td>
+        <td>{{ applicant.university }}</td>
+        <td>{{ applicant.yearsOfExperience }}</td>
+        <td>{{ applicant.knowsPreviousAttendee ? "Yes" : "No" }}</td>
+
+        <!-- Download Passport Scan Button -->
+        <td>
+          <button
+            pButton
+            type="button"
+            label="Download Passport Scan"
+            icon="pi pi-download"
+            (click)="downloadFile('passport', applicant.id)"
+          ></button>
+        </td>
+
+        <!-- Download CV Button -->
+        <td>
+          <button
+            pButton
+            type="button"
+            label="Download CV"
+            icon="pi pi-download"
+            (click)="downloadFile('cv', applicant.id)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <h2>Add an alumni</h2>
+  <p-card>
+    <form [formGroup]="alumniForm" (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        pInputText
+        id="title"
+        formControlName="title"
+        placeholder="Enter Title"
+      />
+
+      <input
+        type="text"
+        pInputText
+        id="description"
+        formControlName="description"
+        placeholder="Enter Description"
+      />
+
+      <p-calendar
+        id="date"
+        formControlName="date"
+        placeholder="Select Date"
+      ></p-calendar>
+
+      <input
+        type="file"
+        pInputText
+        id="image"
+        (change)="onImageChange($event)"
+        accept="image/*"
+      />
+
+      <button
+        type="submit"
+        pButton
+        label="Submit"
+        [disabled]="alumniForm.invalid || alumniLoading"
+        class="p-button-primary"
+      [loading]="alumniLoading"
+      ></button>
+    </form>
+  </p-card>
+</div>

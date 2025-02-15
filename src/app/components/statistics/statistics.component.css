@@ -1,0 +1,98 @@
+/*-- -------------------------- -->
+<---           Stats            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #stats-471 {
+        padding: var(--sectionPadding);
+        background-color: #14142b;
+        /* clips the glowing orbs from causing overflow issues when they overflow the container */
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+    #stats-471:before,
+    #stats-471:after {
+        /* glowing orbs */
+        content: "";
+        width: 28.3125rem;
+        height: 20.8125rem;
+        background: #f1f1f4;
+        opacity: 0.16;
+        -webkit-filter: blur(182px);
+        filter: blur(182px);
+        position: absolute;
+        display: block;
+        top: -4.125rem;
+        left: -14.1875rem;
+        z-index: -1;
+    }
+    #stats-471:after {
+        display: none;
+    }
+    #stats-471 .cs-container {
+        width: 100%;
+        max-width: 59.6875rem;
+        margin: auto;
+    }
+    #stats-471 .cs-card-group {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 3.75rem;
+    }
+    #stats-471 .cs-item {
+        list-style: none;
+        width: 47%;
+        max-width: 15rem;
+        margin: 0;
+        padding: 0 0.75rem;
+        /* prevents padding and border from affecting height and width */
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #stats-471 .cs-icon {
+        /* 50px - 76px */
+        width: clamp(3.125rem, 6vw, 4.75rem);
+        height: auto;
+        margin: 0 0 1.25rem;
+        display: block;
+    }
+    #stats-471 .cs-number {
+        /* 31px - 61px */
+        font-size: clamp(1.9375rem, 4.3vw, 3.8125rem);
+        line-height: 1.2em;
+        text-align: center;
+        font-weight: 400;
+        margin: 0 0 0.25rem 0;
+        color: var(--bodyTextColorWhite);
+    }
+    #stats-471 .cs-desc {
+        /* 16px - 20px */
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        line-height: 1.5em;
+        text-align: center;
+        width: 100%;
+        color: var(--bodyTextColorWhite);
+    }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #stats-471:after {
+        display: block;
+        left: auto;
+        top: 3.5625rem;
+        right: -17.5625rem;
+    }
+    #stats-471 .cs-card-group {
+        justify-content: space-between;
+    }
+}
+
+                                

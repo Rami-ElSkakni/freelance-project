@@ -1,0 +1,34 @@
+<section id="contact-569">
+  <p-toast></p-toast>
+    <div class="cs-container">
+      <div class="cs-left">
+        <div class="cs-content">
+          <h2 class="cs-title">Contact Us</h2>
+          <p class="cs-text">Please send us any questions you might have</p>
+        </div>
+        <!-- Angular Form -->
+        <form [formGroup]="formGroup" class="cs-form">
+          <label class="cs-label">
+            Name
+            <input class="cs-input" type="text" formControlName="name" placeholder="Name" />
+          </label>
+          <label class="cs-label">
+            Email
+            <input class="cs-input" type="email" formControlName="email" placeholder="Email" />
+          </label>
+          <label class="cs-label">
+            Subject
+            <input class="cs-input" type="text" formControlName="subject" placeholder="Subject" />
+          </label>
+          <label class="cs-label cs-message">
+            Message
+            <textarea class="cs-input cs-textarea" formControlName="message" placeholder="Write message..."></textarea>
+          </label>
+          <!-- <input type="text" pInputText/> -->
+          <button *ngIf="!loading" (click)="buttonSubmitHandler()" class="cs-submit" [ngClass]="{'disabled': formGroup.invalid}" type="submit" [disabled]="formGroup.invalid">Send Now</button>
+          <button *ngIf="loading" disabled class="cs-submit">loading..</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  

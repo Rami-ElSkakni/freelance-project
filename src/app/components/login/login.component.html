@@ -1,0 +1,41 @@
+<div class="login-container">
+  <p-toast class="toast"></p-toast>
+
+  <form
+    class="login-container"
+    [formGroup]="loginForm"
+    (ngSubmit)="buttonClickedHandler()"
+  >
+    <!-- Bind the form group -->
+    <h1>{{ registerSelected ? "Register" : "Login" }}</h1>
+    <!-- Email Input -->
+    <input
+      type="email"
+      pInputText
+      placeholder="Enter Email"
+      formControlName="email"
+    />
+
+    <!-- Password Input -->
+    <input
+      type="password"
+      pInputText
+      placeholder="Enter Password"
+      formControlName="password"
+    />
+
+    <button
+      *ngIf="!loading"
+      type="submit"
+      pButton
+      pRipple
+      [label]="registerSelected ? 'Register' : 'Login'"
+      class="p-button-primary"
+    ></button>
+    <button *ngIf="loading" pButton pRipple class="p-button-primary" label="Loading...."></button>
+
+    <p *ngIf="!loading" class="login-instead" (click)="LoginInsteadHandler()">
+      {{ registerSelected ? "Login Instead" : "Register Instead" }}
+    </p>
+  </form>
+</div>

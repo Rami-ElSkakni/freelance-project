@@ -1,0 +1,15 @@
+.alumni-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}   
+
+h1 {
+    text-align: center;
+}
+
+p-table {
+    max-width: 900px;
+    margin: 0 auto;
+}
