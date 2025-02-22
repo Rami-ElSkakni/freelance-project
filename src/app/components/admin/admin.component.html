@@ -97,7 +97,7 @@
     </ng-template>
   </p-table>
 
-  <h2>Add an alumni</h2>
+  <h2>Add an alumni or post</h2>
   <p-card>
     <form [formGroup]="alumniForm" (ngSubmit)="onSubmit()">
       <input
@@ -122,6 +122,15 @@
         placeholder="Select Date"
       ></p-calendar>
 
+      <!-- Add checkbox for IsEventPost -->
+    <div class="p-field-checkbox">
+      <p-checkbox
+        formControlName="isEventPost"
+        [binary]="true"
+        label="Is this an Event?"
+      ></p-checkbox>
+    </div>
+
       <input
         type="file"
         pInputText
@@ -140,4 +149,6 @@
       ></button>
     </form>
   </p-card>
+
+  
 </div>

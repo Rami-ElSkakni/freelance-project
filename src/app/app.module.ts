@@ -29,6 +29,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { AlumniComponent } from './components/alumni/alumni.component';
 import { CardModule } from 'primeng/card';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     CalendarModule,
     CheckboxModule,
     CardModule,
-    FileUploadModule
+    FileUploadModule,
+    ProgressBarModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

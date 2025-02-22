@@ -24,6 +24,7 @@ export class AdminComponent implements OnInit {
       description: ['', Validators.required],
       date: ['', Validators.required],
       image: [null, Validators.required],
+      isEventPost: [false]
     });
   }
 

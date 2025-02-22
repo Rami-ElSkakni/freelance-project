@@ -1,6 +1,8 @@
 <div class="alumni-wrapper">
   <p-toast class="toast"></p-toast>
-    <h1>Alumnis</h1>
+  <h1>Alumnis</h1>
+  
+  <!-- Alumni Table with Image in the First Column -->
   <p-table
     [value]="alumniData"
     [loading]="loading"
@@ -8,21 +10,26 @@
   >
     <ng-template pTemplate="header">
       <tr>
+        <th>Image</th>
         <th>Title</th>
         <th>Description</th>
         <th>Date</th>
-        <th>Image</th>
+        <th>Image Actions</th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-alumnus>
       <tr>
+        <td>
+          <!-- Display Alumni Image -->
+          <img *ngIf="alumnus.imageUrl" [src]="alumnus.imageUrl" alt="Alumni Image" width="100" height="100" />
+        </td>
         <td>{{ alumnus.title }}</td>
         <td>{{ alumnus.description }}</td>
         <td>{{ alumnus.date | date : "yyyy-MM-dd" }}</td>
         <td>
           <button
-          *ngIf="!downloadingImage"
+            *ngIf="!downloadingImage"
             pButton
             type="button"
             label="Download Image"
@@ -30,7 +37,7 @@
             (click)="downloadImage(alumnus.id)"
           ></button>
           <button
-          *ngIf="downloadingImage"
+            *ngIf="downloadingImage"
             pButton
             type="button"
             label="Downloading"
@@ -39,4 +46,48 @@
       </tr>
     </ng-template>
   </p-table>
+</div>
+
+<!-- Events Section -->
+<h1>Events</h1>
+<div class="events-container">
+  <p *ngIf="loadingEvents">Loading...</p>
+  <div class="events-wrapper" *ngFor="let event of eventsData">
+    <div>
+      <p-card>
+        <ng-template pTemplate="content">
+          <div class="event-card">
+            <!-- Image Preview -->
+            <img
+              *ngIf="event.imageUrl"
+              [src]="event.imageUrl"
+              alt="Event Image"
+              width="100"
+              height="100"
+              class="event-image"
+            />
+            <div>{{ event.title }}</div>
+            <!-- Description -->
+            <div>{{ event.description }}</div>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <button
+            *ngIf="!downloadingImage"
+            pButton
+            type="button"
+            label="Download Image"
+            icon="pi pi-download"
+            (click)="downloadEventImage(event.id)"
+          ></button>
+          <button
+            *ngIf="downloadingImage"
+            pButton
+            type="button"
+            label="Downloading"
+          ></button>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
 </div>
