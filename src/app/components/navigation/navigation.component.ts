@@ -8,8 +8,6 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent implements AfterViewInit {
-
-  
   @ViewChild('csNavigation') csNavigation!: ElementRef;
   @ViewChild('csToggle') csToggle!: ElementRef;
   @ViewChild('csExpanded') csExpanded!: ElementRef;
@@ -17,9 +15,11 @@ export class NavigationComponent implements AfterViewInit {
   isLoggedIn = false;
   activeTab = 'home';
 
-  constructor(private elRef: ElementRef, private router: Router, private authService: AuthService) {
-    
-  }
+  constructor(
+    private elRef: ElementRef,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngAfterViewInit(): void {
     const CSbody = document.body;
@@ -28,7 +28,6 @@ export class NavigationComponent implements AfterViewInit {
     const csUL = this.csExpanded.nativeElement;
 
     this.isLoggedIn = this.authService.isLoggedIn();
-    
 
     // Event listener for hamburger menu
     CShamburgerMenu.addEventListener('click', () => {
@@ -56,50 +55,95 @@ export class NavigationComponent implements AfterViewInit {
 
   navigateToContactUs($event: MouseEvent) {
     // contact-569
-    this.router.navigate(['/']); 
+    this.router.navigate(['/']);
     this.activeTab = 'contact';
     const element = document.getElementById('contact-569') as HTMLElement;
-    element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    this.csToggle.nativeElement.classList.toggle('cs-active');
+    this.csNavigation.nativeElement.classList.toggle('cs-active');
+    document.body.classList.toggle('cs-open');
+    this.ariaExpanded(this.csExpanded.nativeElement);
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
     $event.preventDefault();
   }
   navigateToTeam($event: MouseEvent) {
     // meet-us-1020
-    this.router.navigate(['/']); 
+    this.router.navigate(['/']);
     this.activeTab = 'team';
     const element = document.getElementById('meet-us-1020') as HTMLElement;
-    element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
+    this.csToggle.nativeElement.classList.toggle('cs-active');
+    this.csNavigation.nativeElement.classList.toggle('cs-active');
+    document.body.classList.toggle('cs-open');
+    this.ariaExpanded(this.csExpanded.nativeElement);
     $event.preventDefault();
   }
   navigateToAlumni($event: MouseEvent) {
     // meet-us-1020
-    this.router.navigate(['/alumni']); 
+    this.router.navigate(['/alumni']);
     this.activeTab = 'alumni';
+    this.csToggle.nativeElement.classList.toggle('cs-active');
+    this.csNavigation.nativeElement.classList.toggle('cs-active');
+    document.body.classList.toggle('cs-open');
+    this.ariaExpanded(this.csExpanded.nativeElement);
     $event.preventDefault();
   }
 
   navigateToLogin($event: MouseEvent) {
-    this.router.navigate(['/login']); 
+    this.router.navigate(['/login']);
     this.activeTab = 'login';
+    this.csToggle.nativeElement.classList.toggle('cs-active');
+    this.csNavigation.nativeElement.classList.toggle('cs-active');
+    document.body.classList.toggle('cs-open');
+    this.ariaExpanded(this.csExpanded.nativeElement);
     $event.preventDefault();
-    }
+  }
   navigateToRequirements($event: MouseEvent) {
     // content-1637
-    this.router.navigate(['/']); 
+    this.router.navigate(['/']);
     this.activeTab = 'requirements';
     const element = document.getElementById('content-1637') as HTMLElement;
-    element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    this.csToggle.nativeElement.classList.toggle('cs-active');
+    this.csNavigation.nativeElement.classList.toggle('cs-active');
+    document.body.classList.toggle('cs-open');
+    this.ariaExpanded(this.csExpanded.nativeElement);
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
     $event.preventDefault();
   }
   navigateToAbout($event: MouseEvent) {
     // content-1450
-    this.router.navigate(['/']); 
+    this.router.navigate(['/']);
     this.activeTab = 'about';
     const element = document.getElementById('content-1450') as HTMLElement;
-    element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    this.csToggle.nativeElement.classList.toggle('cs-active');
+    this.csNavigation.nativeElement.classList.toggle('cs-active');
+    document.body.classList.toggle('cs-open');
+    this.ariaExpanded(this.csExpanded.nativeElement);
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
     $event.preventDefault();
   }
   navigateToHome($event: MouseEvent) {
     this.activeTab = 'home';
+    this.router.navigate(['/']);
+    this.csToggle.nativeElement.classList.toggle('cs-active');
+    this.csNavigation.nativeElement.classList.toggle('cs-active');
+    document.body.classList.toggle('cs-open');
+    this.ariaExpanded(this.csExpanded.nativeElement);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     $event.preventDefault();
   }
